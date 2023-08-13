@@ -3,6 +3,8 @@ const itemList = document.getElementById('item-list');
 const storageKey = 'crudItems';
 let items = JSON.parse(localStorage.getItem(storageKey)) || [];
 
+// establece una base para la manipulación de datos en la  aplicación 
+
 function updateItemList() {
   itemList.innerHTML = '';
   items.forEach((item, index) => {
@@ -17,6 +19,8 @@ function updateItemList() {
   });
 }
 
+//  se utiliza funcion  dinámicamente actualizar y mostrar la lista de elementos en la interfaz de usuario
+
 function editItem(index) {
   const newProduct = prompt('Nuevo producto:');
   const newPrice = prompt('Nuevo precio:');
@@ -30,6 +34,7 @@ function editItem(index) {
     updateItemList();
   }
 }
+// la función editItem(index) permite al usuario editar un elemento existente en la lista proporcionando nuevos valores para el producto, precio y marca.
 
 function deleteItem(index) {
   items.splice(index, 1);
@@ -43,6 +48,7 @@ form.addEventListener('submit', function(event) {
   const price = document.getElementById('price').value;
   const brand = document.getElementById('brand').value;
   
+  // este fragmento de código permite controlar el proceso de envío del formulario, capturar los valores ingresados por el usuario en los campos de producto, precio y marca
   if (product && price && brand) {
     items.push({ product, price: parseFloat(price), brand });
     localStorage.setItem(storageKey, JSON.stringify(items));
